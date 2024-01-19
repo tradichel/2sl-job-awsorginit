@@ -21,7 +21,7 @@ RUN yum remove unzip -y
 #RUN pip3 install --user setuptools
 #RUN pip3 install --user git-remote-codecommit
 #RUN yum remove python3-pip -y
-RUN sudo yum install jq -y
+RUN yum install jq -y
 
 WORKDIR /job
 COPY --from=framework /container/resources /job/resources/

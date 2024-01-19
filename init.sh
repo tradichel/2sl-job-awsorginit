@@ -6,6 +6,13 @@
 # deploy an organization and initial resources.
 ##############################################################
 
+if [ -d 2sl-jobexecframework ]; then
+ rm -rf 2sl-jobexecframework
+fi
+if [ -d 2sl-jobexecframework ]; then
+	rm -rf 2sl-jobexecframework
+fi
+
 #clone the repositories to CloudShell
 git clone https://github.com/tradichel/2sl-jobexecframework.git
 git clone https://github.com/tradichel/2sl-job-awsorginit.git

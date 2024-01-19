@@ -10,7 +10,6 @@ FROM public.ecr.aws/amazonlinux/amazonlinux:2023
 
 #update the container and install packages
 RUN yum update -y
-RUN yum install git -y
 RUN yum install unzip -y
 RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 RUN unzip awscliv2.zip
@@ -22,7 +21,7 @@ RUN yum remove unzip -y
 #RUN pip3 install --user setuptools
 #RUN pip3 install --user git-remote-codecommit
 #RUN yum remove python3-pip -y
-RUN yum install jq -y
+RUN sudo yum install jq -y
 
 WORKDIR /job
 COPY --from=framework /container/resources /job/resources/

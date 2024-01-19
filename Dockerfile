@@ -16,11 +16,6 @@ RUN unzip awscliv2.zip
 RUN ./aws/install
 RUN aws --version
 RUN yum remove unzip -y
-#RUN yum install python3-pip -y
-#RUN pip3 --version
-#RUN pip3 install --user setuptools
-#RUN pip3 install --user git-remote-codecommit
-#RUN yum remove python3-pip -y
 RUN yum install jq -y
 
 WORKDIR /job

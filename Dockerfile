@@ -12,7 +12,7 @@ FROM public.ecr.aws/amazonlinux/amazonlinux:2023
 RUN yum update -y
 RUN yum install git -y
 RUN yum install unzip -y
-RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-aarch64.zip" -o "awscliv2.zip"
+RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 RUN unzip awscliv2.zip
 RUN ./aws/install
 RUN aws --version

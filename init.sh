@@ -12,3 +12,5 @@ git clone https://github.com/tradichel/2sl-job-awsorginit.git
 
 cd 2sl-jobexecframework/aws
 ./scripts/build.sh awsorginit
+
+

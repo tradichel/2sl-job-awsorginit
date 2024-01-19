@@ -19,8 +19,8 @@ RUN yum remove unzip -y
 RUN yum install jq -y
 
 WORKDIR /job
-COPY --from=framework /container/resources /job/resources/
-COPY --from=framework /container/shared /job/shared/
+COPY --from=framework /container/resources /resources/
+COPY --from=framework /container/shared /shared/
 COPY --from=framework /container/job/run.sh /job/run.sh
 COPY --from=job /execute.sh /job/execute.sh
 RUN chmod -R 755 /job

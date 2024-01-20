@@ -23,9 +23,9 @@ COPY --from=framework /container/resources /resources/
 COPY --from=framework /container/shared /shared/
 COPY --from=framework /container/job/run.sh /job/run.sh
 COPY --from=job /execute.sh /job/execute.sh
-RUN chmod -R 755 /job
 RUN ls /job
 RUN ls /
+RUN chmod -R 755 /job
 
 ENTRYPOINT ["/job/run.sh"]
 #################################################################################

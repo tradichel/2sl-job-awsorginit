@@ -6,6 +6,9 @@
 # deploy an organization and initial resources.
 ##############################################################
 
+docker prune
+sudo yum clean all
+
 if [ -d 2sl-jobexecframework ]; then
  rm -rf 2sl-jobexecframework
 fi
@@ -23,6 +26,8 @@ echo "If buildx version < 0 then uncomment and run the lines to update buildx"
 #sudo make install
 #mkdir -p ~/.docker/cli-plugins #no sudo
 #sudo install bin/build/buildx ~/.docker/cli-plugins/docker-buildx
+#cd ..
+#rm buildx
 
 #clone the repositories to CloudShell
 git clone https://github.com/tradichel/2sl-jobexecframework.git

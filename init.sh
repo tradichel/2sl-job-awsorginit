@@ -39,8 +39,6 @@ parameters="\
   sessiontoken=$sessiontoken,\
   region=$AWS_REGION"
 
-echo $parameters
-
 #remove any spaces so the parameter list is treated as a single argument passed to the container
 parameters=$(echo $parameters | sed 's/ //g')
 

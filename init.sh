@@ -65,6 +65,6 @@ echo "********************************************"
 docker run awsorginit $parameters
 
 #clear space in CloudShell
-docker prune
+sudo docker system prune -y
 sudo yum clean all
 history -c

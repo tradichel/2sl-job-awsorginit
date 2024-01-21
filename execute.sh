@@ -5,8 +5,7 @@
 # Description: Container execution script to run the job
 # for this specific container.
 ##############################################################
-echo "Init Job"
-exit 1
+echo "Executing 2sl-job-awsorginit/execute.sh"
 
 #resources/iam/user/user.yaml
 aws cloudformation deploy --template-file user.yaml --stack-name root-root-iam-user-root-admin --capabilities CAPABILITY_NAMED_IAM --profile $profile --parameter-overrides NameParam=root-admin ConsoleAccessParam=true

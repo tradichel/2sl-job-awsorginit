@@ -42,7 +42,7 @@ aws cloudformation deploy --template template --stack-name root-root-iam-rolepol
 
 echo "The next step is to log into the aws-root IAM User account in the management account."
 echo "Assign hardware and virtual MFA to the user."
-echo "Run the 2sl-job-awsenvironment job using the aws-root user credentials to deploy the job exec framework for the org environment."
+echo "Run the 2sl-job-awsenvinit job for the org environment."
 echo "See the readme in the 2sl-job-awsenvironment repository for more information"
 
 #################################################################################

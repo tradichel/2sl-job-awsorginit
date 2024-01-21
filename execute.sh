@@ -26,21 +26,19 @@ template_dir="2sl-jobexecframework/aws/resources/"
 #like a Yubikey, two if possible, and lock down the credentials in a 
 #secure location for future use only if required.
 template=$template_dir'iam/user/user.yaml'
-echo "aws cloudformation deploy --template-file $template --stack-name root-root-iam-user-root-admin --capabilities CAPABILITY_NAMED_IAM --profile $profile --parameter-overrides NameParam=root-admin ConsoleAccessParam=true"
-
-aws cloudformation deploy --template-file $template --stack-name root-root-iam-user-root-admin --capabilities CAPABILITY_NAMED_IAM --profile $profile --parameter-overrides NameParam=root-admin ConsoleAccessParam=true
+aws cloudformation deploy --template $template --stack-name root-root-iam-user-root-admin --capabilities CAPABILITY_NAMED_IAM --profile $profile --parameter-overrides NameParam=root-admin ConsoleAccessParam=true
 
 template=$template_dir'iam/managedpolicy/root-accountrolepermissionsboundary.yaml'
-aws cloudformation deploy --template-file $template  --stack-name root-root-iam-managedpolicy-root-permissionboundary --capabilities CAPABILITY_NAMED_IAM --profile $profile 
+aws cloudformation deploy --template $template  --stack-name root-root-iam-managedpolicy-root-permissionboundary --capabilities CAPABILITY_NAMED_IAM --profile $profile 
 
 template=$template_dir'iam/userpolicy/root-adminuserpolicy.yaml'
-aws cloudformation deploy --template-file $template --stack-name root-root-iam-userpolicy-root-adminuserpolicy --capabilities CAPABILITY_NAMED_IAM --profile $profile 
+aws cloudformation deploy --template $template --stack-name root-root-iam-userpolicy-root-adminuserpolicy --capabilities CAPABILITY_NAMED_IAM --profile $profile 
 
 template=$template_dir'iam/role/root-adminrole.yaml'
-aws cloudformation deploy --template-file $template --stack-name root-root-role-iam-root-adminrole --capabilities CAPABILITY_NAMED_IAM --profile $profile 
+aws cloudformation deploy --template $template --stack-name root-root-role-iam-root-adminrole --capabilities CAPABILITY_NAMED_IAM --profile $profile 
 
 template=$template_dir'iam/rolepolicy/root-adminrolepolicy.yaml'
-aws cloudformation deploy --template-file template --stack-name root-root-iam-rolepolicy-root-adminrolepolicy --capabilities CAPABILITY_NAMED_IAM --profile $profile 
+aws cloudformation deploy --template template --stack-name root-root-iam-rolepolicy-root-adminrolepolicy --capabilities CAPABILITY_NAMED_IAM --profile $profile 
 
 echo "The next step is to log into the aws-root IAM User account in the management account."
 echo "Assign hardware and virtual MFA to the user."

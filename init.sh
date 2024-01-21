@@ -11,7 +11,7 @@ if [ -d 2sl-jobexecframework ]; then
 fi
 
 if [ -d 2sl-job-awsorginit ]; then
-	rm -rf 2sl-jobawsorginit
+	rm -rf 2sl-job-awsorginit
 fi
 
 buildxversion=$(docker buildx version | cut -d " " -f2 | cut -d "+" -f1)

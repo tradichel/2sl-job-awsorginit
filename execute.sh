@@ -5,6 +5,8 @@
 # Description: Container execution script to run the job
 # for this specific container.
 ##############################################################
+profile="$1"
+
 echo "Executing 2sl-job-awsorginit/execute.sh"
 
 template_dir="/2sl-jobexecframework/resources/aws/"

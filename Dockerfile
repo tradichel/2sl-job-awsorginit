@@ -19,10 +19,14 @@ RUN yum remove unzip -y
 RUN yum install jq -y
 
 WORKDIR /job
-COPY --from=framework /job/resources /job/resources/
-COPY --from=framework /job/shared /job/shared/
-COPY --from=framework /job/run.sh /job/run.sh
-COPY --from=job /execute.sh /job/execute.sh
+#the contexts are passed in when the container is built
+#using the /aws/scripts/build.sh file in the
+#2sl-jobexecframeworkrepo
+COPY --from=framework job/ /job/
+COPY --from=framework resources /job/resources/
+COPY --from=framework shared /job/shared/
+COPY --from=framework job/run.sh /job/run.sh
+COPY --from=job execute.sh /job/execute.sh
 RUN chmod -R 755 /job
 
 ENTRYPOINT ["/job/run.sh"]

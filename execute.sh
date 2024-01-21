@@ -26,6 +26,8 @@ template_dir="2sl-jobexecframework/aws/resources/"
 #like a Yubikey, two if possible, and lock down the credentials in a 
 #secure location for future use only if required.
 template=$template_dir'iam/user/user.yaml'
+echo "aws cloudformation deploy --template-file $template --stack-name root-root-iam-user-root-admin --capabilities CAPABILITY_NAMED_IAM --profile $profile --parameter-overrides NameParam=root-admin ConsoleAccessParam=true"
+
 aws cloudformation deploy --template-file $template --stack-name root-root-iam-user-root-admin --capabilities CAPABILITY_NAMED_IAM --profile $profile --parameter-overrides NameParam=root-admin ConsoleAccessParam=true
 
 template=$template_dir'iam/managedpolicy/root-accountrolepermissionsboundary.yaml'
@@ -40,57 +42,10 @@ aws cloudformation deploy --template-file $template --stack-name root-root-role-
 template=$template_dir'iam/rolepolicy/root-adminrolepolicy.yaml'
 aws cloudformation deploy --template-file template --stack-name root-root-iam-rolepolicy-root-adminrolepolicy --capabilities CAPABILITY_NAMED_IAM --profile $profile 
 
-#We want to take actions in the root account as little as possible since 
-#Service Control Policies (SCPs) do not apply in the root management account
-#of an organization.
-#
-#orgadmin OU
-#orgadmin account
-#orgadmin user
-#orgadmin role
-#orgadmin group
-
-####
-# 
-# Deploy resources to use the 2sl-jobexecframework
-#
-# Running jobs using the 2sl-jobexecframework requires the following minimal credentials and roles:
-#
-# * An EC2 instance job role: Eventually used by an EC2 instance but can be assumed by environment admin
-# * A user with virtual MFA device assigned; the device name must match the username
-# * AWS access key and secret key in secrets manager for the user running the job
-# * A role that the user can assume that is used to run the job
-#
-# Our initial user is the org-admin user (above).
-#
-# Our initial role to run jobs is the org-adminrole (above)
-#
-# We need to deploy the EC2 job role (below).
-#
-# We need to deploy a secret with a developer secret key and access key (below)
-#
-# Once we have those minimal resources the org-admin user can run jobs 
-# until we have all the resource in place including to securely run jobs 
-# in this account which includes an EC2 instance using a secure AMI in a 
-# private network with VPC endpoints and a NAT and all future users and
-# credentials deployed in our IAM account or possibly leveraging an IdP (TBD).
-#
-######
-
-# The ec2job role in this account differs from the long term architecture
-# because we cannot reference users or credentials from other sources until
-# they have been deployed. So our initial configuration of the 2sl-jobexecframework
-# deploys everyting in the org-admin account. This account is used to deploy 
-# everything else or the users that deploy everything else.
-# For this reason, the initial ec2job role references a secret in the same
-# account to obtain the credentials to run jobs and the user and MFA device
-# used to run the jobs is in the same account.
-
-#template=$template_dir'iam/role/orgec2jobrole.yaml'
-#aws cloudformation deploy --template-file $template --stack-name root-root-role-iam-ec2jobrole --capabilities CAPABILITY_NAMED_IAM --profile $profile 
-
-#orgadmin user developer key and access key in secret that only the ec2 job role 
-#and the orgadmin user can access.
+echo "The next step is to log into the aws-root IAM User account in the management account."
+echo "Assign hardware and virtual MFA to the user."
+echo "Run the 2sl-job-awsenvironment job using the aws-root user credentials to deploy the job exec framework for the org environment."
+echo "See the readme in the 2sl-job-awsenvironment repository for more information"
 
 #################################################################################
 # Copyright Notice

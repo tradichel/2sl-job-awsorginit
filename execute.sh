@@ -9,7 +9,7 @@ profile="$1"
 
 echo "Executing 2sl-job-awsorginit/execute.sh"
 
-template_dir="2sl-jobexecframework/resources/aws/"
+template_dir="2sl-jobexecframework/aws/resources/"
 
 #Naver use the root credentials in the root management account unless 
 #absolutely required. And that is almost never. Make sure the 

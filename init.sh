@@ -27,7 +27,7 @@ if [ "$buildxversion" == "v0.0.0" ]; then
 	rm -rf buildx
 	buildxversion=$(docker buildx version)
 	echo "Buildx updated to version: $buildxversion"
-	echo "Restart CloudShell to free up space and run this scirpt again"
+	echo "Restart CloudShell to free up space and run this script again"
 fi
 
 #clone the repositories to CloudShell

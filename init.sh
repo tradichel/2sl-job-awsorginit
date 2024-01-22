@@ -36,7 +36,6 @@ git clone https://github.com/tradichel/2sl-job-awsorginit.git
 
 cd 2sl-jobexecframework/
 ./scripts/build.sh awsorginit
-cd ..
 
 sudo yum install jq -y
 creds=$(curl -H "Authorization: $AWS_CONTAINER_AUTHORIZATION_TOKEN" $AWS_CONTAINER_CREDENTIALS_FULL_URI 2>/dev/null)
@@ -69,3 +68,6 @@ docker run awsorginit $parameters
 sudo docker system prune -y
 sudo yum clean all
 history -c
+./scripts/delete_all_images_and_containers.sh
+cd ..
+rm -rf 2sl*

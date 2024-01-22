@@ -28,7 +28,7 @@ ls
 template='resources/iam/user/user.yaml'
 aws cloudformation deploy --template $template --stack-name root-root-iam-user-root-admin --capabilities CAPABILITY_NAMED_IAM --profile $profile --parameter-overrides NameParam=root-admin ConsoleAccessParam=true
 
-template='resources/iam/managedpolicy/root-accountrolepermissionsboundary.yaml'
+template='resources/iam/managedpolicy/root-permissionsboundary.yaml'
 aws cloudformation deploy --template $template  --stack-name root-root-iam-managedpolicy-root-permissionboundary --capabilities CAPABILITY_NAMED_IAM --profile $profile 
 
 template='resources/iam/userpolicy/root-adminuserpolicy.yaml'

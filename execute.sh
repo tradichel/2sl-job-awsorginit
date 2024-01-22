@@ -38,12 +38,9 @@ template='resources/iam/role/root-adminrole.yaml'
 aws cloudformation deploy --template $template --stack-name root-root-role-iam-root-adminrole --capabilities CAPABILITY_NAMED_IAM --profile $profile 
 
 template='resources/iam/rolepolicy/root-adminrolepolicy.yaml'
-aws cloudformation deploy --template template --stack-name root-root-iam-rolepolicy-root-adminrolepolicy --capabilities CAPABILITY_NAMED_IAM --profile $profile 
+aws cloudformation deploy --template $template --stack-name root-root-iam-rolepolicy-root-adminrolepolicy --capabilities CAPABILITY_NAMED_IAM --profile $profile 
 
-echo "The next step is to log into the aws-root IAM User account in the management account."
-echo "Assign hardware and virtual MFA to the user."
-echo "Run the 2sl-job-awsenvinit job for the org environment."
-echo "See the readme in the 2sl-job-awsenvironment repository for more information"
+echo "The next step is to run 2sl-job-awsenvinit"
 
 #################################################################################
 # Copyright Notice

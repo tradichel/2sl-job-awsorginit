@@ -35,6 +35,30 @@ git clone https://github.com/tradichel/2sl-jobexecframework.git
 git clone https://github.com/tradichel/2sl-job-awsorginit.git
 
 cd 2sl-jobexecframework/
+
+###NOTE: Parameter code untested#####
+#check to see if the domain parameter exists
+exists=$(ssm_parameter_exists "domain")
+#if not ask the user for a domain and add it
+if [ "$exists" == "false" ]; then
+  echo "The domain SSM parameter does not exist."
+  echo "Please enter the email domain you would like to use for the email addresses associated with your AWS accounts:"
+  read domain
+  ssm_put_parameter_value "domain" $domain
+fi
+
+#check to see if the org parameter exists
+exists=$(ssm_parameter_exists "org")
+
+#if not ask the user for a domain and add it
+if [ "$exists" == "false" ]; then
+  echo "The org SSM parameter does not exist."
+  echo "Please enter the value you would like to use prepent to aws account names and use for the name of the root account your AWS accounts:"
+  read domain
+  ssm_put_parameter_value "domain" $domain
+fi
+###NOTE: Parameter code untested#####
+
 ./scripts/build.sh awsorginit
 
 sudo yum install jq -y
